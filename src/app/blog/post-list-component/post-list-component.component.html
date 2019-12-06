@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': post.onLoveIt(),
+                'list-group-item-danger':post.onHateIt()}">
+        <div class="col-md-12 p-0">
+            <app-post-list-item-component [postItem]="post"></app-post-list-item-component>
+        </div>
+    </li>
+</ul>

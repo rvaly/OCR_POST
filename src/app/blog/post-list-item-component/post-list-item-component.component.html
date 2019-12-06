@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-8">
+        <h5>
+            {{postItem.title}}
+        </h5>
+    </div>
+    <div class="col-4 text-right">
+        {{postItem.createdAt | date : 'dd/MM/yyyy, HH:mm' | lowercase }}
+    </div>
+</div>
+<div class="col-12 p-0">
+    {{postItem.content}}
+</div>
+<button class="btn btn-success mr-2"
+        [disabled]="postItem.onLoveIt()"
+        (click)="onLoveItClick()">Like It
+</button>
+<button class="btn btn-danger ml-2"
+        [disabled]="postItem.onHateIt()"
+        (click)="onHateItClick()">Hate It
+</button>

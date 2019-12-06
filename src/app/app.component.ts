@@ -9,20 +9,6 @@ import {Post} from './models/post.model';
 export class AppComponent {
     posts = [];
 
-    constructor() {
-        let post: Post;
-        // post.title = 'Mon premier post';
-        // post.content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.';
-        // post.loveIts = 1;
-        // post.createdAt = new Date('2019/12/01 01:57:37');
-        // this.posts.push(post);
-        for (let postsFakeElement of this.postsFake) {
-            post = new Post();
-            Object.assign(post, postsFakeElement);
-            this.posts.push(post);
-        }
-    }
-
     title = 'Posts';
 
     postsFake = [
@@ -51,4 +37,19 @@ export class AppComponent {
             createdAt: new Date('2019/12/05 12:23:12')
         }
     ];
+
+    constructor() {
+        let post: Post;
+        for (let postsFakeElement of this.postsFake) {
+            post = new Post();
+            postsFakeElement.createdAt = this.generateRandomDate(new Date(2019, 0, 1), new Date());
+            Object.assign(post, postsFakeElement);
+            this.posts.push(post);
+        }
+    }
+
+    generateRandomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
 }
